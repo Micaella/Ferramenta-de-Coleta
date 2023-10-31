@@ -1,0 +1,2 @@
+/RAXML/inputs/aminoacido.phylip
+/RAXML/inputs/C2_total.phylip
