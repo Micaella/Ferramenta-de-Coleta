@@ -1,11 +1,38 @@
-Ferramenta para a coleta dos dados
+# Ferramenta de Coleta de Dados para Treinamento de Modelos Preditivos
 
-Para realizar o treinamento dos modelos preditivos, Extra Trees Classifier e o Extra Trees Regressor, é fundamental dispor de um conjunto de dados que contenha informações sobre as execuções do RAxML. Portanto, para obter esse conjunto de dados, foi necessário coletar e armazenar os dados relacionados ao desempenho da aplicação no que se refere ao tempo de execução e ao uso de memória para cada execução no ambiente supercomputador Santos Dumont.
+## Visão Geral
+A coleta de dados detalhada é crucial para o treinamento eficiente dos modelos preditivos Extra Trees Classifier e Extra Trees Regressor. Esses dados fornecem uma visão sobre o desempenho do RAxML em termos de tempo de execução e uso de memória em cada operação dentro do supercomputador Santos Dumont.
 
-A ferramenta de coleta de dados é composta por dois módulos: um desses módulos, desenvolvido em Python, responsável pela criação do script de submissão, adaptado conforme a configuração do experimento; e o outro, desenvolvido em Shell Script, que se encarrega de submeter o script, verificar se alguma tarefa já submetida foi finalizada e, assim que uma termina, submete a próxima. Ao final, quando todas as tarefas do experimento são concluídas, realiza-se a coleta dos dados de execução de cada uma delas através do comando sacct. Esses dados são então armazenados em um arquivo no formato CSV (valores separados por vírgula), formando, assim, a base de dados.
+### 📋 Pré-requisitos
 
-Para tornar a ferramenta mais abrangente, os módulos podem ser ajustados para gerar um script de submissão para a aplicação desejada, junto com as configurações do experimento desejado (como número de nós, threads, parâmetros da aplicação e outros). A classe RunRamxl pode ser modificada para ajustar os parâmetros da aplicação, enquanto a classe SubmissionFile pode ser ajustada para os parâmetros do sbatch. No módulo Shell Script, é possível alterar as configurações do experimento, incluindo o número de nós, threads, parâmetros da aplicação, e mais.
+* Python 3.8.10 
+* Bibliotecas: pandas e numpy.
+```
+pip install pandas numpy scikit-learn
+```
 
-O arquivo "input_files.txt" é aquele que deve conter os caminhos para os arquivos de entrada necessários para a execução da aplicação. No diretório "exemplos", pode ser encontrada amostras de arquivos de saída da ferramenta, bem como um arquivo de entrada para o RAxML (aminoacido.phylip). O arquivo "sub.sh" exemplifica o script de submissão gerado pela ferramenta. O arquivo "all_jobs_2022-11-18-12-49-48.txt" é um exemplo do arquivo onde os identificadores dos jobs submetidos pela ferramenta no ambiente SD estão salvos, e o arquivo "saida_sacct" ilustra o exemplo final de saída da ferramenta, formando a base de dados.
+## Componentes da Ferramenta
+A ferramenta é composta por dois módulos principais:
 
-Para a execução da ferramenta pode ser utilizada a linha: bash new_scheduler.sh
+1. **Módulo Python:** Encarregado da criação do script de submissão, ajustável conforme os parâmetros específicos do experimento.
+2. **Módulo Shell Script:** Responsável por submeter o script ao sistema de gerenciamento de jobs, monitorar o status dos jobs e coletar os dados após a conclusão dos experimentos usando o comando `sacct`.
+
+## Coleta e Armazenamento de Dados
+Os resultados são coletados e armazenados em um arquivo CSV, constituindo a base de dados necessária para o treinamento dos modelos.
+
+## Personalização
+- A classe `RunRaxml` é adaptável para modificar parâmetros específicos da aplicação RAxML.
+- A classe `SubmissionFile` permite ajustes nos parâmetros de submissão `sbatch`.
+- No módulo Shell Script, pode-se personalizar as configurações do experimento, incluindo número de nós, threads, parâmetros da aplicação, entre outros.
+
+## Arquivos e Diretórios Importantes
+- `input_files.txt`: Contém os caminhos para os arquivos de entrada necessários para a execução da aplicação.
+- `exemplos/`: Contém amostras de arquivos de saída da ferramenta e um arquivo de entrada de exemplo para o RAxML (`aminoacido.phylip`).
+- `sub.sh`: Um exemplo de script de submissão gerado pela ferramenta.
+- `all_jobs_2022-11-18-12-49-48.txt`: Contém os identificadores dos jobs submetidos no ambiente SD.
+- `saida_sacct`: Exemplifica a saída final da ferramenta, formando a base de dados.
+
+## Execução
+Para iniciar a coleta de dados dentro do seu ambiente computacional, execute o seguinte comando no terminal:
+```bash
+bash new_scheduler.sh
