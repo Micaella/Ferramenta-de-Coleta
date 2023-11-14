@@ -54,8 +54,7 @@ Se você considerar a Ferramenta de Coleta de Dados ou a base de dados úteis pa
  doi = {10.5753/wscad.2022.226377},
  url = {https://sol.sbc.org.br/index.php/wscad/article/view/21945}
 }
-```
-```
+
 @inproceedings{coelho2022development,
   title={Development of a Machine Learning Framework to Support Efficient Scientific Gateways},
   author={Coelho, M. and Freire, G. and Ocaña, K. and Osthoff, C. and Galheigo, M. and Carneiro, A.R. and Boito, F. and Navaux, P. and Cardoso, D.O.},
