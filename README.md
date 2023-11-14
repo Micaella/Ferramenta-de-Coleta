@@ -36,6 +36,7 @@ Os resultados são coletados e armazenados em um arquivo CSV, constituindo a bas
 Para iniciar a coleta de dados dentro do seu ambiente computacional, execute o seguinte comando no terminal:
 ```bash
 bash new_scheduler.sh
+```
 
 ## Cite
 Se você considerar a Ferramenta de Coleta de Dados ou a base de dados úteis para sua pesquisa, recomendamos citar os seguintes artigos em seus trabalhos:
